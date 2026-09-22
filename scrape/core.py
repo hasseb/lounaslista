@@ -20,8 +20,15 @@ WEEKDAY_LABEL = ["Maanantai", "Tiistai", "Keskiviikko", "Torstai", "Perjantai",
 
 # A line is a day heading when it *starts* with a weekday name. Trailing junk
 # ("Maanantai 21.9.", "MAANANTAI 10:30-14:00") is expected and ignored.
-_HEADING = re.compile(r"^(%s)\b" % "|".join(WEEKDAYS), re.IGNORECASE)
-_DATE = re.compile(r"(\d{1,2})\s*\.\s*(\d{1,2})\s*\.\s*(\d{4})?")
+_HEADING = re.compile(r"^(%s)(?:\b|(?=(?-i:[A-ZÄÖÅ])))" % "|".join(WEEKDAYS), re.IGNORECASE)
+_SHORT_HEADING = re.compile(r"^(ma|ti|ke|to|pe)\s+\d{1,2}\.", re.IGNORECASE)
+_THURSDAY_HEADING = re.compile(r"^lettutorstai\s+\d{1,2}\.", re.IGNORECASE)
+_DATED_HEADING = re.compile(
+    r"(maanantai|tiistai|keskiviikko|torstai|perjantai)\s+"
+    r"\d{1,2}\s*\.\s*\d{1,2}\s*\.(?:\s*\d{4})?",
+    re.IGNORECASE,
+)
+_DATE = re.compile(r"(\d{1,2})\s*(?:\.|-)\s*(\d{1,2})\s*(?:\.|-)\s*(\d{4})?")
 
 # Lines that are never food.
 _NOISE = re.compile(
@@ -38,7 +45,7 @@ _NOISE = re.compile(
 _STOP = re.compile(
     r"^(allergeenit|aukioloaj|yhteystied|kaikki lounaat|tilaa |seuraa |lataa |"
     r"tilaisuudet|alennukset|etsitkö|klikkaa|kysy lisää|à?\s*la carte|"
-    r"lounasbuffet|lounas\s+(ma|ti|ke|to|pe|arkisin)|"
+    r"lounasbuffet|lounas\s+(ma|ti|ke|to|pe|arkisin)|hinnat\s+ovat|"
     r"(ma|ti|ke|to|pe|la|su)\s*-\s*(ma|ti|ke|to|pe|la|su)\s*\d|"
     r"l\u00f6yd\u00e4t meid\u00e4t|varaa |palaute|"
     r"(lounas|keitto|salaatti)\w*\s*\d+[,.]\d{2}|"
@@ -89,6 +96,7 @@ def html_to_lines(markup: str) -> list[str]:
     s = re.sub(r"(?s)<!--.*?-->", " ", s)
     s = re.sub(r"(?s)<[^>]+>", "", s)
     s = _html.unescape(s)
+    s = re.sub(r"(?i)<br\s*/?>", "\n", s)
 
     out = []
     for raw in s.split("\n"):
@@ -105,10 +113,23 @@ def _headings(lines: list[str]) -> list[tuple[int, int]]:
         m = _HEADING.match(line)
         if m:
             found.append((i, WEEKDAYS.index(m.group(1).lower())))
+            continue
+        m = _SHORT_HEADING.match(line)
+        if m:
+            found.append((i, ["ma", "ti", "ke", "to", "pe"].index(m.group(1).lower())))
+            continue
+        if _THURSDAY_HEADING.match(line):
+            found.append((i, 3))
+            continue
+        m = _DATED_HEADING.search(line)
+        if m:
+            found.append((i, WEEKDAYS.index(m.group(1).lower())))
     return found
 
 
-def _best_run(found: list[tuple[int, int]]) -> list[tuple[int, int]]:
+def _best_run(
+    found: list[tuple[int, int]], *, prefer_latest: bool = False,
+) -> list[tuple[int, int]]:
     """Pick the Mon->Fri sequence that looks like the real menu.
 
     Pages often name weekdays more than once (navigation, opening hours,
@@ -125,7 +146,8 @@ def _best_run(found: list[tuple[int, int]]) -> list[tuple[int, int]]:
             runs.append(current)
             current = [item]
     runs.append(current)
-    return max(runs, key=len)
+    key = (lambda run: (len(run), run[0][0])) if prefer_latest else len
+    return max(runs, key=key)
 
 
 @dataclass
@@ -185,6 +207,7 @@ def extract_week(
     max_len: int = 180,
     gap: int = 25,
     max_weekday: int = 4,
+    prefer_latest: bool = False,
 ) -> list[Day]:
     """Pull one Mon-Fri menu out of a page.
 
@@ -193,7 +216,7 @@ def extract_week(
     prints "Maanantai" above Monday's food.
     """
     lines = html_to_lines(markup)
-    run = _best_run(_headings(lines))
+    run = _best_run(_headings(lines), prefer_latest=prefer_latest)
     if not run:
         return []
 

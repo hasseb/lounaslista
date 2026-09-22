@@ -1,7 +1,6 @@
 # Lounaslista
 
-Lunch menus from six restaurants around Linnakallio, Pirkkala and Tampere,
-collected onto one page.
+Lunch menus from six restaurants in Pitäjänmäki, collected onto one page.
 
 The menus are scraped **on a schedule by GitHub Actions**, not in the browser.
 The scraper commits `data/menus.json`, and the page just reads that file. This
@@ -13,16 +12,15 @@ per visitor.
 
 | Restaurant | Area | Source |
 |---|---|---|
-| Linkosuo Linnakallio | Linnakallio | [linkosuo.fi](https://linkosuo.fi/toimipaikka/linkosuo-linnakallio/) |
-| Tiinan Kotiruoka | Linnakallio | [tiinankotiruoka.fi](https://tiinankotiruoka.fi/lounas-linnakallio/) |
-| Ninan Keittiö | Linnakallio / Veho | [ninankeittio.fi](https://www.ninankeittio.fi/pirkkala-linnakallio-veho/) |
-| Ståhlberg Jasperintie | Jasperintie | [stahlbergkahvilat.fi](https://stahlbergkahvilat.fi/lounasravintolat/jasperintie/) |
-| Ra-Sa-Vil | Tampere | [ra-sa-vil.fi](https://www.ra-sa-vil.fi/tampere) |
-| Ravintola Bufferi | Pirkkala | [bufferi.com](https://bufferi.com/pirkkala/) |
+| Factory Pitäjänmäki | Pitäjänmäki | [ravintolafactory.com](https://ravintolafactory.com/lounasravintolat/ravintolat/helsinki-pitajanmaki/) |
+| Lounasravintola Herkkuhetki | Pitäjänmäki | [herkkuhetkitali.fi](https://herkkuhetkitali.fi/) |
+| Pitäjänmäen Osuusruokala | Pitäjänmäki | [por.fi](https://por.fi/menu/) |
+| Ravintola 911 | Kumpula | [ravintola911.fi](https://ravintola911.fi/karvaamokuja-4-lounaslista/) |
+| Ravintola Faundori | Pitäjänmäki | [ravintolapalvelut.iss.fi](https://ravintolapalvelut.iss.fi/ravintola-faundori/) |
+| Tellus | Pitäjänmäki | [compass-group.fi](https://www.compass-group.fi/ravintolat-ja-ruokalistat/foodco/kaupungit/helsinki/tellus/) |
 
 All six serve their menus in server-rendered HTML, and all six allow this in
 `robots.txt`.
-
 ## Running it locally
 
 No dependencies — Python 3.11+ standard library only.
@@ -35,7 +33,7 @@ python3 -m http.server 8000   # then open http://localhost:8000
 Useful flags while developing a parser:
 
 ```bash
-python3 -m scrape --only bufferi     # just one restaurant
+python3 -m scrape --only por         # just one restaurant
 python3 -m scrape --offline saved/   # reparse saved <id>.html, no network
 ```
 
@@ -88,8 +86,8 @@ says so.
 To investigate, save the page and iterate offline:
 
 ```bash
-curl -sL https://bufferi.com/pirkkala/ -o saved/bufferi.html
-python3 -m scrape --offline saved/ --only bufferi
+curl -sL https://por.fi/menu/ -o saved/por.html
+python3 -m scrape --offline saved/ --only por
 ```
 
 ## Deploying to GitHub Pages

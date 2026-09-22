@@ -2,7 +2,7 @@
 
     python3 -m scrape                 # fetch live
     python3 -m scrape --offline DIR   # reparse saved <id>.html files
-    python3 -m scrape --only bufferi  # one restaurant
+    python3 -m scrape --only por      # one restaurant
 """
 from __future__ import annotations
 
@@ -74,7 +74,7 @@ def main(argv: list[str] | None = None) -> int:
             if i:
                 time.sleep(args.delay)      # be a considerate visitor
             try:
-                markup = fetch(spec["url"])
+                markup = fetch(spec.get("scrape_url", spec["url"]))
             except Exception as exc:        # noqa: BLE001 - one site must not sink the rest
                 markup = None
                 print(f"  ! {spec['name']}: {exc}", file=sys.stderr)
