@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-22T00:32:17+03:00",
+ "generatedAt": "2026-09-22T10:35:07+03:00",
  "weekStart": "2026-09-21",
  "restaurants": [
   {
@@ -79,6 +79,92 @@
    ]
   },
   {
+   "id": "lasihelmi",
+   "name": "Lasihelmi",
+   "url": "https://www.compass-group.fi/ravintolat-ja-ruokalistat/foodco/kaupungit/helsinki/lasihelmi/",
+   "area": "Helsinki",
+   "hours": "ma-pe 10:15-13:00",
+   "status": "ok",
+   "error": null,
+   "days": [
+    {
+     "weekday": 0,
+     "label": "Maanantai",
+     "date": "2026-09-21",
+     "items": [
+      "Rapeaa kanaa - Crispy chicken (G, L, M)",
+      "Murskattua perunaa, juustoa ja yrttejä (A, G, L)",
+      "Tomaattimajoneesia (A, G, ILM, L, M)",
+      "Smetana härkää (*, A, G, L, VS)",
+      "Riisiä (G, L, M, Veg)",
+      "Paistettuja nuudeleita ja sticky Mifua (A, ILM, L, VS)",
+      "Juustoista kasvissosekeittoa (*, A, G, ILM, L)",
+      "Minttu-suklaarahkaa L,A"
+     ]
+    },
+    {
+     "weekday": 1,
+     "label": "Tiistai",
+     "date": "2026-09-22",
+     "items": [
+      "Lasihelmen amerikkalaisia chili-jauhelihapihvejä (A, L, M)",
+      "Kermaperunoita (A, G, L)",
+      "Cheddarkastiketta ja jalapenoja L,G",
+      "Katkarapuja,kirjolohta, rigatonipastaa ja tilliä (A, L, VS)",
+      "Pastajuustoa (A, G, L)",
+      "Paahdettua tofua ja riisiä Pad Kra Pao (A, G, L, M)",
+      "Parsakaalisosekeittoa (*, A, G, ILM, L)",
+      "Puutarhamarja-ruismurupaistosta (A, L, M, Veg)",
+      "Kinuskikermavaahtoa (A, G, L)"
+     ]
+    },
+    {
+     "weekday": 2,
+     "label": "Keskiviikko",
+     "date": "2026-09-23",
+     "items": [
+      "VÄLIMEREN RISTEILY TEEMAPÄIVÄ",
+      "Tatti-herkkusienirisottoa L,G,A",
+      "Munakoiso-kasvismoussakaa L,G,A,VS",
+      "Toscanan kanaa L,G,A,VS",
+      "Serranokinkku-pepperoni-parmesan aretsaanipizzaa Lasihelmen tapaan",
+      "Runsas salaattipöytä täynnä välimerellisiä makuja",
+      "Kreikkalaista hunaja-pistaasipähkinäkakkua L,A"
+     ]
+    },
+    {
+     "weekday": 3,
+     "label": "Torstai",
+     "date": "2026-09-24",
+     "items": [
+      "Lasihelmen  lasagnea, talon pestoa ja valkosipulimurskaa (A, L, VS)",
+      "Broileria Jamaican tapaan - Jerk Chicken (A, G, L, VS)",
+      "Paahdettua perunaa (*, G, ILM, L, M, Veg)",
+      "Chili-mangomajo L,G,A",
+      "Lasihelmen Nokkosohukaisia (A, ILM)",
+      "Puolukkaa (A, G, L, M, Veg)",
+      "Palsternakkasosekeittoa (*, A, G, ILM, L)",
+      "Meidän keittiön pannukakkua (A, L)",
+      "Hillottua mansikkaa ja kermavaahtoa (G, L)"
+     ]
+    },
+    {
+     "weekday": 4,
+     "label": "Perjantai",
+     "date": "2026-09-25",
+     "items": [
+      "Classic Briossi BRG ja savujuustoa (A, L)",
+      "McFood&Coburgerikastiketta (A, G, L, VS)",
+      "Uuniperunaa (*, G, ILM, L, M, Veg)",
+      "Fetapiirakka - Pumpkin Spice (A, ILM, VL)",
+      "Pasta carbonaraa tagliatelle pastasta (A, L)",
+      "Juustoinen savuporokeitto L,G,A",
+      "Food & Co Jäätelöbuffet (A, G, L)"
+     ]
+    }
+   ]
+  },
+  {
    "id": "herkkuhetki",
    "name": "Lounasravintola Herkkuhetki",
    "url": "https://herkkuhetkitali.fi/",
@@ -92,18 +178,22 @@
      "label": "Maanantai",
      "date": "2026-09-21",
      "items": [
-      "Päivän erikoissalaatti",
       "Mansikka-juustosalaatti (VL, G)",
       "Lime-korianterikastike (L, G)",
       "Krutongit (M)",
-      "Päivän keitto",
       "Koskenlaskijan-savuporokeitto (L, G)",
-      "Lämpimät pääruoat",
       "Pintasavustettua lohta kantarellikastikkeella (L, G)",
       "Tilli-perunat (M, G)",
       "Grillattua broilerin fileetä lime-kookoskastikkeella (M, G)",
       "Basmatiriisi (M, G)",
-      "Pasta carbonara runsaalla pekonilla (L)"
+      "Pasta carbonara runsaalla pekonilla (L)",
+      "Parmesaanimuru (L)",
+      "Wokatut tuoreet kasvikset tofulla (G, VE, VS)",
+      "Kebab-jalapenopizza (VL)",
+      "Kasvispizza (VL)",
+      "Amerikkalaiset pannukakut (L)",
+      "Mustikkahilloa (G, VE)",
+      "Vaniljavaahtoa (L, G)"
      ]
     },
     {
@@ -111,18 +201,18 @@
      "label": "Tiistai",
      "date": "2026-09-22",
      "items": [
-      "Päivän erikoissalaatti",
       "Kirsikkatomaatti-papusalaatti (G, VE)",
-      "Päivän keitto",
       "Perinteinen makkarakeitto (M, G)",
-      "Lämpimät pääruoat",
       "Yön yli haudutettua naudan niskaa tummalla rosmariini-punaviinikastikkeella (M, G)",
       "Rapeat lohkoperunat (M, G)",
       "Herkullinen tandoori chicken tikka masala (L, G, VS)",
       "Basmatiriisi (G, VE)",
       "Raita-jogurttikastike (L, G)",
       "Smetanalla höystetty kinkku-poronkäristyskiusaus (L, G)",
-      "Vegaaninen"
+      "Kasvis-perunaröstit härkiksellä (G, VE)",
+      "Tulinen salamipizza (VL)",
+      "Feta-paprika-oliivipizza (VL)",
+      "Herkkuhetken jäätelöbaari (L, G)"
      ]
     },
     {
@@ -130,18 +220,20 @@
      "label": "Keskiviikko",
      "date": "2026-09-23",
      "items": [
-      "Päivän erikoissalaatti",
       "Aasialainen katkarapusalaatti (M, G)",
-      "Päivän keitto",
       "Perinteinen lohikeitto tuoreella tillillä (L, G)",
-      "Lämpimät pääruoat",
       "Paneroidut broilerin paistinleikkeet (M, G)",
       "Currydippi (L, G)",
       "Rapeat perunat (M, G)",
       "Talon jauhelihapullat sweet & sour -kastikkeessa (M, G, VS)",
       "Perunamuusi (L, G)",
       "Perinteiset jauhemaksapihvit (M, G)",
-      "Itse tehdyt maukkaat pinaattiletut (L)"
+      "Itse tehdyt maukkaat pinaattiletut (L)",
+      "Puolukkasurvos (VE, G)",
+      "Kasvis-papupata tuoreella korianterilla (G, VE)",
+      "Kinkku-mozzarellapizza (VL)",
+      "Kasvispizza (VL)",
+      "Kookos-persikkasmoothie (L, G)"
      ]
     },
     {
@@ -149,18 +241,27 @@
      "label": "Torstai",
      "date": "2026-09-24",
      "items": [
-      "Päivän erikoissalaatti",
       "Kreikkalainen fetasalaatti (L, G)",
-      "Päivän keitto",
       "Perinteinen savupotka-hernekeitto (M, G)",
       "Hienonnettua sipulia ja sinappia (VE, G)",
-      "Lämpimät pääruoat",
       "Voissa paistetut muikut (L)",
       "Raikas tilli-kermaviili (L, G)",
       "Perunamuusi (L, G)",
       "Nepalilainen Butter Chicken (L, G, sis. cashewpähkinää)",
       "Basmatiriisi (G, VE)",
-      "Raita-jogurttikastike (L, G)"
+      "Raita-jogurttikastike (L, G)",
+      "Pulled Pork Texas Roadhouse (M, G)",
+      "Cheddarjuustokastike (VL)",
+      "Maustekurkku (G, VE)",
+      "Jalapeno (M, G)",
+      "Tex-mex härkis-kasvispaistos yrteillä (G, VE)",
+      "Pepperonipizza (VL)",
+      "Kasvispizza (VL)",
+      "Itse tehdyt maukkaat letut (L)",
+      "Gluteenittomat ja vegaaniset letut keittiöstä (G, VE)",
+      "Vaniljajäätelöä (L, G)",
+      "Talon mansikkahilloa (G, VE)",
+      "Vaniljavaahtoa (L, G)"
      ]
     },
     {
@@ -168,18 +269,19 @@
      "label": "Perjantai",
      "date": "2026-09-25",
      "items": [
-      "Päivän erikoissalaatti",
       "Kasvis-caesarsalaatti (L, G, VS, sisältää kalaa)",
       "Krutongit (M)",
-      "Päivän keitto",
       "Kermainen papukeitto (L, G)",
-      "Lämpimät pääruoat",
       "Grillattua porsaanleikettä (M)",
       "Maustevoita (M, G)",
       "Ranskalaiset (M, G)",
       "Paistettua broilerin fileetä rosepippurikastikkeessa (L, G)",
       "Riisi (M, G)",
-      "Tee-se-itse hodaribuffet runsailla lisukkeilla (M)"
+      "Tee-se-itse hodaribuffet runsailla lisukkeilla (M)",
+      "Kasvis-kikhernemuhennos (G, VE)",
+      "Pizza Diavola (VL)",
+      "Mozzarella-kirsikkatomaattipizza (VL)",
+      "Talon porkkanakakkua (L)"
      ]
     }
    ]
@@ -271,7 +373,10 @@
       "Parilakebab ja makkara M",
       "1-Pizza; kinkku, sipuli, aurajuusto, vs L",
       "2-Pizza; kana, paprika, purjo L",
-      "3-Pizza; savulohi, punasipuli, mozzarella L"
+      "3-Pizza; savulohi, punasipuli, mozzarella L",
+      "4-Kasvispizza; maustekurkku, ananas, tofu L",
+      "Jälkiruoka; Luomu päärynäkiisseli M",
+      ", jäätelöt"
      ]
     },
     {
@@ -290,7 +395,11 @@
       "Metsästäjänpihvit (naudanliha) L",
       "Sinappinen kanacaesarsalaatti L",
       "1-Pizza; kebab, sipuli, mozzarella, vs L",
-      "2-Pizza; kana, ananas, aurajuusto L"
+      "2-Pizza; kana, ananas, aurajuusto L",
+      "3-Pizza; salami, herkkusieni, purjo vs L",
+      "4-Kasvispizza, parsakaali, punasipuli, kapris L",
+      "Jälkiruoka; Mangorahkapiirakka L",
+      ", vaniljajogurtti L"
      ]
     },
     {
@@ -309,7 +418,10 @@
       "Mozzarella tomaattisalaatti L",
       "1- Pizza; kurpitsa, sipuli, peperone, vs L",
       "2-Pizza; kana, tomaatti, tofu L",
-      "3-Pizza; kebab, ananas, aurajuusto, vs L"
+      "3-Pizza; kebab, ananas, aurajuusto, vs L",
+      "4-Kasvispizza; aurinkotom., herkkusieni, paprika L",
+      "Jälkiruoka; kinuskikakku L",
+      ", hedelmät, jäätelö"
      ]
     },
     {
@@ -328,7 +440,11 @@
       "1-Pizza; kana, aurinkotomaatti, sipuli, vs L",
       "2-Pizza; kebab, ananas, mozzarella L",
       "3-Pizza; kinkku, herkkusieni, pekoni, vs L",
-      "4-Kasvispizza; ananas, tomaatti, purjo L"
+      "4-Kasvispizza; ananas, tomaatti, purjo L",
+      "Jälkiruoka; itse tehty ohukainen L",
+      ", Saatavana, myös gluteeniton L",
+      "kermavaahto L",
+      ", mansikkahillo"
      ]
     },
     {
@@ -347,7 +463,11 @@
       "Uunissa haudutettu entrecote paistinliemikastikkeessa M",
       "Välemerellinen fetasalaatti L",
       "1-Pizza; tonnikala, sipuli, peperone L",
-      "2-Pizza; kebab, paprika, mozzarella vs L"
+      "2-Pizza; kebab, paprika, mozzarella vs L",
+      "3-Pizza; kana, kurpitsa, aurajuusto L",
+      "4-Kasvispizza; maustekurkku, tomatti, artisokka L",
+      "Jälkiruoka; Itse tehty käärekakku (päärynä herkulla) L",
+      ", hedelmät"
      ]
     }
    ]
@@ -371,7 +491,12 @@
       "Marry me kanaa ja Rummo-pastaa (M)",
       "Kasvislounas",
       "Kasvispyöryköitä, vegaanista jogurttikastiketta ja paahdettuja yrttiperunoita",
-      "Keitto"
+      "Keitto",
+      "Bataatti-kookoskeittoa",
+      "Salaattibuffa 2.0",
+      "12.90 € / 15.90 €/kg",
+      "Jälkiruoka",
+      "Jäätelöbaari"
      ]
     },
     {
@@ -379,12 +504,17 @@
      "label": "Tiistai",
      "date": "2026-09-22",
      "items": [
-      "Plate: Tamarindmaustettua kananpoikaa, wokattuja sesongin kasviksia ja nuudeleita",
+      "Plate: Tamarindmaustettua kananpoikaa, wokattuja sesongin kasviksia ja nuudeleita (pyydettäessä G)",
       "Buffetlounas",
       "BBQ glaseerattua porsaan kassleria ja perunasosetta",
       "Kasvislounas",
       "Kasviscurrya, jogurttikastiketta (L,G) ja basmatiriisiä",
-      "Keitto"
+      "Keitto",
+      "Pinaattikeittoa ja kananmunaa",
+      "Salaattibuffa 2.0",
+      "12.90 € / 15.90 €/kg",
+      "Jälkiruoka",
+      "Uuniomenarahkaa"
      ]
     },
     {
@@ -397,7 +527,12 @@
       "Feta-pinaattitäytteistä seitä, jogurttikastiketta ja perunaa",
       "Kasvislounas",
       "Wokattuja kasviksia pähkinä-sataykastikkeessa ja nuudeleita",
-      "Keitto"
+      "Keitto",
+      "Purjo-perunasosekeittoa",
+      "Salaattibuffa 2.0",
+      "12.90 € / 15.90 €/kg",
+      "Jälkiruoka",
+      "Mustikkakiisseliä ja kermavaahtoa (L,G)"
      ]
     },
     {
@@ -410,7 +545,13 @@
       "Meksikolaista kanaa ja kasviksia sekä paistettua paprikariisiä",
       "Kasvispihvit, raitakastiketta (L,G), uusia perunoita (V,G)",
       "Kasvislounas",
-      "Kasvis-kevätkääryleet, sweet chilikastiketta ja paistettua paprikariisiä (V,G)"
+      "Kasvis-kevätkääryleet, sweet chilikastiketta ja paistettua paprikariisiä (V,G)",
+      "Keitto",
+      "Inkivääri-porkkanasosekeittoa",
+      "Salaattibuffa 2.0",
+      "12.90 € / 15.90 €/kg",
+      "Jälkiruoka",
+      "Pannukakkua (Glut.pyyd.), hilloa (V,G), kermavaahtoa (L,G)"
      ]
     },
     {
@@ -423,7 +564,13 @@
       "Mausteiset kasvispihvit, persilja-jogurttikastiketta ja riisiä",
       "Keitto",
       "Kermaista juuressosekeittoa",
-      "Salaattibuffa 2.0"
+      "Salaattibuffa 2.0",
+      "12.90 € / 15.90 €/kg",
+      "Jälkiruoka",
+      "Herkkuvalikoima",
+      "Dieettimerkinnät voivat poiketa yllä olevasta listauksesta, joten tarkistathan aina ravintolassa ruoan soveltuvuuden omaan erityisruokavalioosi.",
+      "Valitse tulostusnäkymä",
+      "Viikon ruokalista"
      ]
     }
    ]
@@ -438,22 +585,31 @@
    "error": null,
    "days": [
     {
-     "weekday": 0,
-     "label": "Maanantai",
-     "date": "2026-09-21",
+     "weekday": 1,
+     "label": "Tiistai",
+     "date": "2026-09-22",
      "items": [
+      "So Morning :",
+      "Kaurapuuroa M sekä herkku-kaurapuuroa G,L, Munakasta, Luonnonjogurtti-chia-annoksia, Mustikka-tuorepuuroa ym.. ()",
+      "LOUNAALLA SadonkorjuuBuffet, Tervetuloa! ()",
       "So Green:",
-      "Italialaisia kasvispyöryköitä (A, G, ILM, L, M, Veg, VS)",
-      "Pestojogurttia (A, G, ILM, L)",
-      "Paahdettua perunaa (*, G, ILM, L, M, Veg)",
+      "Smetanaista kaalivuokaa (A, G, ILM, L, VS)",
+      "Puolukkaa (A, G, L, M, Veg)",
+      "So Green / Vegan:",
+      "Kvinoa pihvejä (A, G, ILM, L, M, Veg)",
+      "Basilikamajoneesi (A, G, L, M, Veg)",
       "So Green Soup:",
-      "Purjo-perunasosekeittoa (A, G, ILM, L, VS)",
+      "Kantarellikeittoa (A, ILM, L, VS)",
       "So Hungry:",
-      "Meetwurstia Margherita ja pennepastaa (A, L, VS)",
-      "Broileria makean tulisella glaseerauksella - Korean Fried Chicken (A, L, M, VS)",
-      "Seesammajoneesia (A, G, L, M)",
-      "Basmatiriisiä (G, L, M, Veg)",
-      "So Sweet:"
+      "Porsas-juurespaistia (*, G, L, M)",
+      "Paahdettua broileria, kirsikkatomaatteja ja pinaattia",
+      "(G, L, M)",
+      "Kotimaista kauraa & porkkanaa",
+      "(*, A, G, ILM, L, M, Veg)",
+      "Hunajajogurttia",
+      "(A, G, ILM, L)",
+      "So Sweet:",
+      "Vispipuuroa kaikille lounastajille (A, M, L, Veg)"
      ]
     }
    ]

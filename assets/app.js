@@ -59,6 +59,8 @@
 
     const day = (r.days || []).find(d => d.weekday === weekday);
     if (day && day.items && day.items.length) {
+      if (day.items.length > 9) c.classList.add("compact");
+      if (day.items.length > 12) c.classList.add("extra-compact");
       const ul = el("ul", "dishes");
       day.items.forEach(i => ul.appendChild(dish(i)));
       c.appendChild(ul);

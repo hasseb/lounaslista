@@ -1,10 +1,10 @@
 # Lounaslista
 
-Lunch menus from six restaurants in Pitäjänmäki, collected onto one page.
+Lunch menus from seven restaurants in Helsinki, collected onto one page.
 
 The menus are scraped **on a schedule by GitHub Actions**, not in the browser.
 The scraper commits `data/menus.json`, and the page just reads that file. This
-sidesteps CORS entirely (none of the six sites send permissive CORS headers),
+sidesteps CORS entirely (none of the seven sites send permissive CORS headers),
 keeps the page fast, and means one visit per restaurant per run instead of one
 per visitor.
 
@@ -13,20 +13,21 @@ per visitor.
 | Restaurant | Area | Source |
 |---|---|---|
 | Factory Pitäjänmäki | Pitäjänmäki | [ravintolafactory.com](https://ravintolafactory.com/lounasravintolat/ravintolat/helsinki-pitajanmaki/) |
+| Lasihelmi | Helsinki | [compass-group.fi](https://www.compass-group.fi/ravintolat-ja-ruokalistat/foodco/kaupungit/helsinki/lasihelmi/) |
 | Lounasravintola Herkkuhetki | Pitäjänmäki | [herkkuhetkitali.fi](https://herkkuhetkitali.fi/) |
 | Pitäjänmäen Osuusruokala | Pitäjänmäki | [por.fi](https://por.fi/menu/) |
 | Ravintola 911 | Kumpula | [ravintola911.fi](https://ravintola911.fi/karvaamokuja-4-lounaslista/) |
 | Ravintola Faundori | Pitäjänmäki | [ravintolapalvelut.iss.fi](https://ravintolapalvelut.iss.fi/ravintola-faundori/) |
 | Tellus | Pitäjänmäki | [compass-group.fi](https://www.compass-group.fi/ravintolat-ja-ruokalistat/foodco/kaupungit/helsinki/tellus/) |
 
-All six serve their menus in server-rendered HTML, and all six allow this in
-`robots.txt`.
+The restaurants expose their menus through server-rendered HTML, feeds, or
+structured data, and all allow this in `robots.txt`.
 ## Running it locally
 
 No dependencies — Python 3.11+ standard library only.
 
 ```bash
-python3 -m scrape          # fetch all six, write data/menus.json
+python3 -m scrape          # fetch all seven, write data/menus.json
 python3 -m http.server 8000   # then open http://localhost:8000
 ```
 
@@ -119,7 +120,7 @@ under load. Neither matters much for lunch.
 
 ```
 scrape/core.py          fetching, HTML flattening, weekday extraction
-scrape/restaurants.py   the six sites
+scrape/restaurants.py   the seven sites
 scrape/__main__.py      runner; writes data/menus.json
 data/menus.json         scraper output, committed
 index.html assets/      the page: no build step, no dependencies

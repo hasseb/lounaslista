@@ -7,14 +7,14 @@ from __future__ import annotations
 
 import re
 
-RESTAURANTS = [
+_RESTAURANTS = [
     {
         "id": "factory-pitajanmaki",
         "name": "Factory Pitäjänmäki",
         "url": "https://ravintolafactory.com/lounasravintolat/ravintolat/helsinki-pitajanmaki/",
         "area": "Pitäjänmäki",
         "hours": "ma-pe 10:00-14:00",
-        "opts": {"max_items": 8},
+        "opts": {"max_items": 24},
     },
     {
         "id": "herkkuhetki",
@@ -23,7 +23,13 @@ RESTAURANTS = [
         "scrape_url": "https://herkkuhetkitali.fi/lounas/",
         "area": "Pitäjänmäki",
         "hours": "ma-pe 10:00-14:00",
-        "opts": {"max_items": 12},
+        "opts": {
+            "max_items": 24,
+            "skip_items": (
+                "Päivän erikoissalaatti", "Päivän keitto", "Lämpimät pääruoat",
+                "Vegaaninen", "Päivän pizza", "Jälkiruoka",
+            ),
+        },
     },
     {
         "id": "por",
@@ -31,7 +37,7 @@ RESTAURANTS = [
         "url": "https://por.fi/menu/",
         "area": "Pitäjänmäki",
         "hours": "ma-pe 10:15-13:00",
-        "opts": {"max_items": 6},
+        "opts": {"max_items": 24},
     },
     {
         "id": "911",
@@ -40,7 +46,7 @@ RESTAURANTS = [
         "scrape_url": "https://lounas.app/lounaslista/911-karvaamokuja",
         "area": "Pitäjänmäki",
         "hours": "ma-pe 09:30-14:30",
-        "opts": {"max_items": 12},
+        "opts": {"max_items": 24},
     },
     {
         "id": "faundori",
@@ -48,7 +54,7 @@ RESTAURANTS = [
         "url": "https://ravintolapalvelut.iss.fi/ravintola-faundori/",
         "area": "Pitäjänmäki",
         "hours": "ma-pe 10:30-13:00",
-        "opts": {"max_items": 6},
+        "opts": {"max_items": 24},
     },
     {
         "id": "tellus",
@@ -57,9 +63,19 @@ RESTAURANTS = [
         "scrape_url": "https://www.compass-group.fi/menuapi/feed/rss/current-day?costNumber=3105&language=fi",
         "area": "Pitäjänmäki",
         "hours": "ma-pe 10:30-13:15",
-        "opts": {"max_items": 12},
+        "opts": {"max_items": 24},
+    },
+    {
+        "id": "lasihelmi",
+        "name": "Lasihelmi",
+        "url": "https://www.compass-group.fi/ravintolat-ja-ruokalistat/foodco/kaupungit/helsinki/lasihelmi/",
+        "area": "Helsinki",
+        "hours": "ma-pe 10:15-13:00",
+        "opts": {"max_items": 24, "structured_menu": True},
     },
 ]
+
+RESTAURANTS = sorted(_RESTAURANTS, key=lambda restaurant: restaurant["name"].casefold())
 
 
 def by_id(rid: str) -> dict:

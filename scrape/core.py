@@ -35,6 +35,7 @@ _NOISE = re.compile(
     r"eväste|evästeit|cookie|tietosuoja|yhteystied|copyright|©|all rights|"
     r"seuraa meitä|facebook|instagram|lue lisää|katso lisää|siirry|"
     r"varaa pöytä|tilaa uutiskirje|hyväksy|asetukset|valikko|etusivu|"
+    r"^\s*(?:ve|l|vl|g|m)\s*=|^\s*mahdollisista allergeeneista|"
     r"^\s*(ma|ti|ke|to|pe)\s*$|^\s*lounas\s*$|^\s*€?\s*[\d,.\s]+€?\s*$|"
     r"^\s*(avoinna|aukiolo)",
     re.IGNORECASE,
@@ -181,8 +182,11 @@ def _join_continuations(chunk: list[str]) -> list[str]:
     return out
 
 
-def _clean_items(chunk: list[str], max_items: int, max_len: int) -> list[str]:
+def _clean_items(
+    chunk: list[str], max_items: int, max_len: int, skip_items: tuple[str, ...] = (),
+) -> list[str]:
     items, seen = [], set()
+    skipped = {item.casefold() for item in skip_items}
     for line in _join_continuations(chunk):
         if _STOP.match(line):
             break
@@ -191,6 +195,8 @@ def _clean_items(chunk: list[str], max_items: int, max_len: int) -> list[str]:
         if _NOISE.search(line):
             continue
         key = line.casefold()
+        if key in skipped:
+            continue
         if key in seen:
             continue
         seen.add(key)
@@ -198,6 +204,47 @@ def _clean_items(chunk: list[str], max_items: int, max_len: int) -> list[str]:
         if len(items) >= max_items:
             break
     return items
+
+
+def _extract_schema_menu(markup: str, max_items: int, max_len: int) -> list[Day]:
+    match = re.search(
+        r'<script[^>]+id=["\']restaurant-structured-data["\'][^>]*>(.*?)</script>',
+        markup, re.IGNORECASE | re.DOTALL,
+    )
+    if not match:
+        return []
+    try:
+        data = json.loads(_html.unescape(match.group(1)))
+    except json.JSONDecodeError:
+        return []
+
+    sections = data.get("hasMenu", {}).get("hasMenuSection", [])
+    days = []
+    for section in sections:
+        valid_from = section.get("validFrom", "")
+        try:
+            section_date = date.fromisoformat(valid_from[:10])
+        except ValueError:
+            continue
+        weekday = section_date.weekday()
+        if weekday > 4:
+            continue
+        items = []
+        for menu_item in section.get("hasMenuItem", []):
+            name = menu_item.get("name", "").strip()
+            description = menu_item.get("description", "").strip()
+            item = f"{name} ({description})" if description else name
+            if 3 <= len(item) <= max_len and item not in items:
+                items.append(item)
+            if len(items) >= max_items:
+                break
+        days.append(Day(
+            weekday=weekday,
+            label=WEEKDAY_LABEL[weekday],
+            date=section_date.isoformat(),
+            items=items,
+        ))
+    return sorted(days, key=lambda day: day.weekday)
 
 
 def extract_week(
@@ -208,6 +255,8 @@ def extract_week(
     gap: int = 25,
     max_weekday: int = 4,
     prefer_latest: bool = False,
+    skip_items: tuple[str, ...] = (),
+    structured_menu: bool = False,
 ) -> list[Day]:
     """Pull one Mon-Fri menu out of a page.
 
@@ -215,6 +264,9 @@ def extract_week(
     restyling its markup does not break the parser as long as it still
     prints "Maanantai" above Monday's food.
     """
+    if structured_menu:
+        return _extract_schema_menu(markup, max_items, max_len)
+
     lines = html_to_lines(markup)
     run = _best_run(_headings(lines), prefer_latest=prefer_latest)
     if not run:
@@ -241,7 +293,7 @@ def extract_week(
             except ValueError:
                 pass
 
-        day.items = _clean_items(tail, max_items, max_len)
+        day.items = _clean_items(tail, max_items, max_len, skip_items)
         days.append(day)
 
     return _trim_last(days)

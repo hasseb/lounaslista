@@ -37,7 +37,7 @@ body {
   font: 16px/1.5 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   padding-bottom: 3rem;
 }
-.wrap { max-width: 1440px; margin: 0 auto; padding: 0 24px; }
+.wrap { max-width: 1600px; margin: 0 auto; padding: 0 24px; }
 
 .top {
   background: linear-gradient(180deg, var(--card), transparent);
@@ -68,12 +68,12 @@ h1 { margin: 0; font-size: 1.5rem; letter-spacing: -.02em; }
 
 .grid {
   display: grid; gap: 16px;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
 }
 .card {
   background: var(--card); border: 1px solid var(--line);
   border-radius: var(--radius); box-shadow: var(--shadow);
-  padding: 16px 18px 18px; display: flex; flex-direction: column;
+  min-width: 0; padding: 16px 18px 18px; display: flex; flex-direction: column;
 }
 .card h2 { margin: 0; font-size: 1.05rem; letter-spacing: -.01em; }
 .card h2 a { color: inherit; text-decoration: none; }
@@ -83,9 +83,18 @@ h1 { margin: 0; font-size: 1.5rem; letter-spacing: -.02em; }
 
 ul.dishes { list-style: none; margin: 0; padding: 0; display: grid; gap: 9px; }
 ul.dishes li {
+  min-width: 0; overflow-wrap: anywhere;
   font-size: .93rem; line-height: 1.45;
   padding-left: 14px; position: relative;
 }
+.card.compact { padding-block: 12px 14px; }
+.card.compact .meta { margin-bottom: 8px; }
+.card.compact ul.dishes { gap: 4px; }
+.card.compact ul.dishes li { font-size: .82rem; line-height: 1.25; }
+.card.compact .tags { margin-left: 3px; }
+.card.extra-compact { padding-block: 10px 12px; }
+.card.extra-compact ul.dishes { gap: 2px; }
+.card.extra-compact ul.dishes li { font-size: .76rem; line-height: 1.15; }
 ul.dishes li::before {
   content: ""; position: absolute; left: 0; top: .62em;
   width: 5px; height: 5px; border-radius: 50%; background: var(--accent); opacity: .55;
