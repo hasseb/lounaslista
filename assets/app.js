@@ -2,9 +2,6 @@
 (() => {
   "use strict";
 
-  const DAYS = ["Maanantai", "Tiistai", "Keskiviikko", "Torstai", "Perjantai"];
-  const SHORT = ["Ma", "Ti", "Ke", "To", "Pe"];
-
   // Allergen codes as the restaurants write them, trailing the dish.
   const TAGS = /(?:^|[\s(])((?:VL|VE|MU|LL|[LGMVA])(?:\s*[,/]\s*(?:VL|VE|MU|LL|[LGMVA]))*)\s*$/;
   const PRICE = /(\d{1,2}[,.]\d{2})\s*€?\s*$/;
@@ -79,46 +76,12 @@
     document.getElementById("loading").hidden = true;
   }
 
-  function buildTabs(data, active, onPick) {
-    const nav = document.getElementById("days");
-    nav.textContent = "";
-    const start = new Date(data.weekStart + "T00:00:00");
-
-    DAYS.forEach((name, i) => {
-      const d = new Date(start); d.setDate(start.getDate() + i);
-      const b = el("button");
-      b.type = "button";
-      b.appendChild(el("span", "full", name));
-      b.appendChild(el("span", "short", SHORT[i]));
-      b.appendChild(el("span", "dt", `${d.getDate()}.${d.getMonth() + 1}.`));
-      b.setAttribute("aria-current", String(i === active));
-      b.addEventListener("click", () => onPick(i));
-      nav.appendChild(b);
-    });
-  }
-
-  const mondayOf = d => {
-    const x = new Date(d);
-    x.setHours(0, 0, 0, 0);
-    x.setDate(x.getDate() - ((x.getDay() + 6) % 7));
-    return x;
-  };
-
-  function stamp(data) {
-    const t = new Date(data.generatedAt);
-    const when = t.toLocaleString("fi-FI", {
-      weekday: "short", day: "numeric", month: "numeric",
+  function updateFooter(data) {
+    const updated = new Date(data.generatedAt).toLocaleString("fi-FI", {
+      day: "numeric", month: "numeric", year: "numeric",
       hour: "2-digit", minute: "2-digit",
     });
-    const p = document.getElementById("updated");
-    p.textContent = `Listat muuttuivat viimeksi ${when}.`;
-
-    // Staleness is a question about the week, not the clock. Menus sit
-    // unchanged for days quite legitimately; what actually means trouble is
-    // a weekStart from a week that has already been and gone.
-    if (new Date(data.weekStart + "T00:00:00") < mondayOf(new Date())) {
-      p.appendChild(el("strong", "warn-text", " Tämä on edellisen viikon lista."));
-    }
+    document.getElementById("updated").textContent = `Päivitetty ${updated}`;
   }
 
   async function init() {
@@ -135,11 +98,9 @@
 
     // Monday on weekends - nobody is reading this for Saturday.
     const wd = new Date().getDay();
-    let active = wd === 0 || wd === 6 ? 0 : wd - 1;
-
-    const show = i => { active = i; buildTabs(data, active, show); render(data, active); };
-    show(active);
-    stamp(data);
+    const active = wd === 0 || wd === 6 ? 0 : wd - 1;
+    render(data, active);
+    updateFooter(data);
   }
 
   init();
